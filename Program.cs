@@ -17,6 +17,7 @@ builder.Services.AddHttpClient<ICatFactService, CatFactService>((serviceProvider
     var settings = serviceProvider.GetRequiredService<IOptions<ApiSettings>>().Value;
     client.BaseAddress = new Uri(settings.BaseUrl);
 });
+builder.Services.AddScoped<ITextFileService, TextFileService>();
 
 var app = builder.Build();
 

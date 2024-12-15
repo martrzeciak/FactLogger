@@ -25,7 +25,7 @@ public class CatFactService : ICatFactService
         }
         catch (Exception ex)
         {
-            _logger.LogError("Error getting cat fact: {Error}", ex);
+            _logger.LogError(ex, "Error getting cat fact.");
             throw;
         }
     }
