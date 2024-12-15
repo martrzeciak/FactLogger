@@ -4,5 +4,5 @@ namespace FactLogger.Contracts;
 
 public interface ICatFactService
 {
-    Task<CatFact> GetCatFactAsync();
+    Task<CatFact?> GetCatFactAsync();
 }

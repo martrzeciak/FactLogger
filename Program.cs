@@ -1,10 +1,22 @@
 using FactLogger.Components;
+using FactLogger.Configuration;
+using FactLogger.Contracts;
+using FactLogger.Services;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
+.AddInteractiveServerComponents();
+
+builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettings"));
+
+builder.Services.AddHttpClient<ICatFactService, CatFactService>((serviceProvider, client) =>
+{
+    var settings = serviceProvider.GetRequiredService<IOptions<ApiSettings>>().Value;
+    client.BaseAddress = new Uri(settings.BaseUrl);
+});
 
 var app = builder.Build();
 
