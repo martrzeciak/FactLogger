@@ -7,9 +7,5 @@ namespace FactLogger.Contracts;
 /// </summary>
 public interface ITextFileService
 {
-    /// <summary>
-    /// Appends a cat fact to a text file asynchronously.
-    /// </summary>
-    /// <param name="fact">The cat fact to append.</param>
     Task AppendFactToFileAsync(CatFact fact);
 }

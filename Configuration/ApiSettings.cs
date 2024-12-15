@@ -5,8 +5,5 @@
 /// </summary>
 public class ApiSettings
 {
-    /// <summary>
-    /// Base URL of the API.
-    /// </summary>
     public string BaseUrl { get; set; } = default!;
 }

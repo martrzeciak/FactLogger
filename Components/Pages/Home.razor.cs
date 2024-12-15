@@ -8,21 +8,12 @@ namespace FactLogger.Components.Pages
     /// </summary>
     public partial class Home
     {
-        /// <summary>
-        /// Service for fetching cat facts.
-        /// </summary>
         [Inject]
         private ICatFactService CatFactService { get; set; } = default!;
 
-        /// <summary>
-        /// Service for appending cat facts to a file.
-        /// </summary>
         [Inject]
         private ITextFileService FileService { get; set; } = default!;
 
-        /// <summary>
-        /// The current cat fact being displayed.
-        /// </summary>
         private string? _catFact;
 
         /// <summary>

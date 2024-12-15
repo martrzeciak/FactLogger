@@ -9,19 +9,9 @@ namespace FactLogger.Services;
 /// </summary>
 public class TextFileService : ITextFileService
 {
-    /// <summary>
-    /// The file path where cat facts are stored.
-    /// </summary>
     private const string _filePath = "cat_facts.txt";
-    /// <summary>
-    /// Logger for logging messages related to the text file service.
-    /// </summary>
     private readonly ILogger<TextFileService> _logger;
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="TextFileService"/> class.
-    /// </summary>
-    /// <param name="logger">The logger instance.</param>
     public TextFileService(ILogger<TextFileService> logger)
     {
         _logger = logger;
