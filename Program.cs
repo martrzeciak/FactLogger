@@ -1,8 +1,5 @@
 using FactLogger.Components;
-using FactLogger.Configuration;
-using FactLogger.Contracts;
-using FactLogger.Services;
-using Microsoft.Extensions.Options;
+using FactLogger.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,15 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
 .AddInteractiveServerComponents();
 
-builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettings"));
-
-builder.Services.AddHttpClient("factCatApi", (serviceProvider, client) =>
-{
-    var settings = serviceProvider.GetRequiredService<IOptions<ApiSettings>>().Value;
-    client.BaseAddress = new Uri(settings.BaseUrl);
-});
-builder.Services.AddScoped<ICatFactService, CatFactService>();
-builder.Services.AddScoped<ITextFileService, TextFileService>();
+builder.Services.AddApplicationServices(builder.Configuration);
 
 var app = builder.Build();
 

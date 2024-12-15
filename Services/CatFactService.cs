@@ -16,7 +16,7 @@ public class CatFactService : ICatFactService
     }
     public async Task<CatFact?> GetCatFactAsync()
     {
-        using var client = _httpClientFactory.CreateClient("factCatApi");
+        using var client = _httpClientFactory.CreateClient("catFactsApi");
 
         try
         {
