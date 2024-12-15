@@ -4,16 +4,33 @@ using System.Text.Json;
 
 namespace FactLogger.Services;
 
+/// <summary>
+/// Service for handling text file operations related to text file.
+/// </summary>
 public class TextFileService : ITextFileService
 {
+    /// <summary>
+    /// The file path where cat facts are stored.
+    /// </summary>
     private const string _filePath = "cat_facts.txt";
+    /// <summary>
+    /// Logger for logging messages related to the text file service.
+    /// </summary>
     private readonly ILogger<TextFileService> _logger;
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="TextFileService"/> class.
+    /// </summary>
+    /// <param name="logger">The logger instance.</param>
     public TextFileService(ILogger<TextFileService> logger)
     {
         _logger = logger;
     }
 
+    /// <summary>
+    /// Appends a cat fact to a text file asynchronously. Creates the file if it does not exist.
+    /// </summary>
+    /// <param name="fact">The cat fact to append.</param>
     public async Task AppendFactToFileAsync(CatFact fact)
     {
         try
@@ -24,7 +41,7 @@ public class TextFileService : ITextFileService
                 _logger.LogInformation("File does not exist. Creating new file.");
                 using (File.Create(_filePath)) 
                 {
-                    _logger.LogInformation("File has been created");
+                    _logger.LogInformation("File has been created.");
                 }
             }
 

@@ -3,16 +3,31 @@ using Microsoft.AspNetCore.Components;
 
 namespace FactLogger.Components.Pages
 {
+    /// <summary>
+    /// Home component that displays a random cat fact and provides functionality to fetch new facts.
+    /// </summary>
     public partial class Home
     {
+        /// <summary>
+        /// Service for fetching cat facts.
+        /// </summary>
         [Inject]
         private ICatFactService CatFactService { get; set; } = default!;
 
+        /// <summary>
+        /// Service for appending cat facts to a file.
+        /// </summary>
         [Inject]
         private ITextFileService FileService { get; set; } = default!;
 
+        /// <summary>
+        /// The current cat fact being displayed.
+        /// </summary>
         private string? _catFact;
 
+        /// <summary>
+        /// Fetches a new cat fact and updates the display. Logs the fact to a file if successful.
+        /// </summary>
         private async Task GetNewCatFact()
         {
 
