@@ -4,5 +4,5 @@ namespace FactLogger.Contracts;
 
 public interface ITextFileService
 {
-    Task<bool> AppendFactToFileAsync(CatFact fact);
+    Task AppendFactToFileAsync(CatFact fact);
 }

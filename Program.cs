@@ -12,11 +12,12 @@ builder.Services.AddRazorComponents()
 
 builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettings"));
 
-builder.Services.AddHttpClient<ICatFactService, CatFactService>((serviceProvider, client) =>
+builder.Services.AddHttpClient("factCatApi", (serviceProvider, client) =>
 {
     var settings = serviceProvider.GetRequiredService<IOptions<ApiSettings>>().Value;
     client.BaseAddress = new Uri(settings.BaseUrl);
 });
+builder.Services.AddScoped<ICatFactService, CatFactService>();
 builder.Services.AddScoped<ITextFileService, TextFileService>();
 
 var app = builder.Build();
